@@ -10,7 +10,7 @@ class ScriptGenerator:
 
     def generate(self, topic, research):
         prompt = f"""
-Write a YouTube Shorts narration.
+You are writing a viral YouTube Shorts narration.
 
 TOPIC:
 {topic}
@@ -18,31 +18,52 @@ TOPIC:
 RESEARCH:
 {research}
 
+Your job is NOT to list facts.
+
+Your job is to tell a story.
+
+Structure:
+
+1. Strong hook
+2. Introduce conflict/problem
+3. Reveal turning point
+4. End with payoff or insight
+
 Requirements:
 
 - 45-60 seconds
-- Start with a strong statement
-- Never start with "Imagine"
-- Never start with a question
-- Use the research information
-- Focus on story, conflict, or insight
 - Short sentences
-- Simple English
-- Build curiosity naturally
-- End with a memorable conclusion
+- Conversational English
+- High curiosity
+- Sound like a successful Shorts creator
+- Use research facts naturally
 
 Rules:
 
-- Do NOT invent statistics
-- Do NOT invent studies
-- Do NOT invent percentages
-- Do NOT invent quotes
-- Do NOT invent facts
+- Never start with "Imagine"
+- Never start with a question
+- Never sound like Wikipedia
+- Never list facts one after another
+- Do not use bullet points
+- Do not use headings
 
-Only use information from the research section.
+Bad Example:
 
-No bullet points.
-No headings.
+"Google was founded in 1998.
+It launched AdWords in 2000.
+It acquired YouTube in 2006."
+
+Good Example:
+
+"Google wasn't the first search engine.
+
+But it became the biggest.
+
+While everyone else focused on finding websites,
+Google figured out how to make money from attention.
+
+That decision changed the internet forever."
+
 Narration only.
 """
 
