@@ -2,9 +2,13 @@ from dotenv import load_dotenv
 
 from agents.topic_finder import TopicFinder
 from agents.research_agent import ResearchAgent
+from agents.research_saver import ResearchSaver
 from agents.script_generator import ScriptGenerator
 from agents.script_saver import ScriptSaver
-from agents.research_saver import ResearchSaver
+from agents.voice_generator import VoiceGenerator
+from agents.audio_saver import AudioSaver
+
+import asyncio
 
 load_dotenv()
 
@@ -15,6 +19,9 @@ research_saver = ResearchSaver()
 
 script_generator = ScriptGenerator()
 script_saver = ScriptSaver()
+
+voice_generator = VoiceGenerator()
+audio_saver = AudioSaver()
 
 topic = topic_finder.get_topic()
 
@@ -39,14 +46,22 @@ script_path = script_saver.save(
     script
 )
 
-print("\nRESEARCH\n")
-print(research)
+audio_path = audio_saver.get_path(
+    topic
+)
 
-print("\nSCRIPT\n")
-print(script)
+asyncio.run(
+    voice_generator.generate(
+        script,
+        audio_path
+    )
+)
 
 print("\nSaved Research:")
 print(research_path)
 
 print("\nSaved Script:")
 print(script_path)
+
+print("\nSaved Audio:")
+print(audio_path)

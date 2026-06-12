@@ -1,4 +1,16 @@
-.venv/
-.env
+# Generated content
+output/audio/
+output/scripts/
+output/research/
+output/images/
+output/videos/
+
+# Python
 __pycache__/
 *.pyc
+
+# Secrets
+.env
+
+# Virtual env
+.venv/
