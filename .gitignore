@@ -1,18 +1,18 @@
-# Generated content
-output/audio/
-output/scripts/
-output/research/
-output/images/
-output/videos/
+# Environment
+.env
+.venv/
 
 # Python
 __pycache__/
 *.pyc
 
-# Secrets
-.env
-
-# Virtual env
-.venv/
-
+# Runtime state
 data/used_topics.json
+data/topic_pool.json
+
+# Generated outputs
+output/
+
+# OS files
+.DS_Store
+Thumbs.db
