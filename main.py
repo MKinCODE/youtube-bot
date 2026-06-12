@@ -9,6 +9,9 @@ from agents.research_saver import ResearchSaver
 from agents.script_generator import ScriptGenerator
 from agents.script_saver import ScriptSaver
 
+from agents.critic_agent import CriticAgent
+from agents.review_saver import ReviewSaver
+
 from agents.visual_planner import VisualPlanner
 from agents.visual_plan_saver import VisualPlanSaver
 
@@ -27,6 +30,9 @@ research_saver = ResearchSaver()
 
 script_generator = ScriptGenerator()
 script_saver = ScriptSaver()
+
+critic_agent = CriticAgent()
+review_saver = ReviewSaver()
 
 visual_planner = VisualPlanner()
 visual_plan_saver = VisualPlanSaver()
@@ -49,11 +55,11 @@ research_path = research_saver.save(topic, research)
 script = script_generator.generate(topic, research)
 script_path = script_saver.save(topic, script)
 
+review = critic_agent.review(topic, script)
+review_path = review_saver.save(topic, review)
+
 visual_plan = visual_planner.generate(topic, script)
-visual_plan_path = visual_plan_saver.save(
-    topic,
-    visual_plan
-)
+visual_plan_path = visual_plan_saver.save(topic, visual_plan)
 
 visual_queries = visual_query_generator.generate(
     topic,
@@ -74,23 +80,8 @@ asyncio.run(
     )
 )
 
-print("\nVISUAL PLAN\n")
-print(visual_plan)
+print("\nREVIEW\n")
+print(review)
 
-print("\nVISUAL QUERIES\n")
-print(visual_queries)
-
-print("\nSaved Research:")
-print(research_path)
-
-print("\nSaved Script:")
-print(script_path)
-
-print("\nSaved Visual Plan:")
-print(visual_plan_path)
-
-print("\nSaved Visual Queries:")
-print(visual_query_path)
-
-print("\nSaved Audio:")
-print(audio_path)
+print("\nSaved Review:")
+print(review_path)
